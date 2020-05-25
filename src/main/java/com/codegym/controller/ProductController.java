@@ -26,6 +26,7 @@ public class ProductController {
     public Iterable<Supplier> suppliers(){
         return supplierService.findAll();
     }
+
     @GetMapping
     public ModelAndView listCustomer(@RequestParam("first") Optional<String> first, Pageable pageable) {
         Page<Product> products;
