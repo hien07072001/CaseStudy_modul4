@@ -1,7 +1,6 @@
 package com.codegym.service.product;
 
 import com.codegym.model.Product;
-import com.codegym.model.Supplier;
 import com.codegym.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +14,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Autowired
     private ProductRepository productRepository;
+
     @Override
     public Page<Product> findAll(Pageable pageable) {
         return productRepository.findAll(pageable);
@@ -23,10 +23,6 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Page<Product> findAllByName(String name, Pageable pageable) {
         return productRepository.findAllByName(name, pageable);
-    }
-    @Override
-    public Iterable<Product> findAllBySupplier(Supplier supplier) {
-        return productRepository.findAllBySupplier(supplier);
     }
 
     @Override

@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<h1>Edit orders</h1>
+<p>
+    <a href="/orders">Order list</a>
+</p>
+<!--<th:block th:if="${message}">-->
+<!--    <p th:text="${message}"></p>-->
+<!--</th:block>-->
+<form th:action="@{/orders/edit}" th:object="${orders}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+
+        <tr>
+            <td>DATE:</td>
+            <td><input type="text" th:field="*{date}"/></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>
+                <select name="name" th:field="*{customer}">
+                    <option
+                    th:each="c : ${customers}"
+                    th:value="${c.id}"
+                    th:text="${c.name}">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update order"></td>
+        </tr>
+    </table>
+</form>
 
 </body>
 </html>

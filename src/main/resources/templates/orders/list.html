@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<a href="/orders/create">Create Order</a>
+<h1>Orders</h1>
+<table border="1">
+    <tr>
+        <th>Date</th>
+        <th>Customer</th>
+        <th>ADDRESS</th>
+        <th>PHONE</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    <th:block th:each="order: ${orders}">
+        <tr>
+            <td th:text="${order.date}"></td>
+            <td th:text="${order.customer.name}"></td>
+            <td th:text="${order.customer.address}"></td>
+            <td th:text="${order.customer.phone}"></td>
+            <td><a th:href="@{/orders/edit/__${order.id}__ }">Edit</a></td>
+            <td><a th:href="@{/orders/delete/__${order.id}__ }">Delete</a></td>
+            <td><a th:href="@{/orders/view/__${order.id}__ }">View</a></td>
+        </tr>
+    </th:block>
+</table>
 </body>
 </html>

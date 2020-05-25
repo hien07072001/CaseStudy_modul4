@@ -5,11 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<!--<div>-->
-<!--    <a th:href="@{/list}">Home</a> | <a th:href="@{/logout}">Logout</a>-->
-<!--</div>-->
+<div>
+    <a th:href="@{/list}">Home</a> | <a th:href="@{/logout}">Logout</a>
+</div>
 
-<a href="/product/create">Create new product</a>
+<a href="{/create}">Create new product</a>
 <h1>Product</h1>
 
 <!--<form>-->
@@ -22,25 +22,21 @@
 <table border="1">
     <tr>
         <th>ID</th>
-        <th>NAME</th>
         <th>AVATAR</th>
-        <th>PRICE</th>
         <th>DESCRIPTION</th>
-
-        <th>Supplier</th>
+        <th>NAME</th>
+        <th>PRICE</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
     <th:block th:each="productn : ${products}">
         <tr>
             <td th:text="${productn.id}"></td>
-            <td th:text="${productn.name}">
-
             <td><img width="100px" height="50px" th:src="@{'/img/'+ ${productn.getAvatar()}}"></td>
-            <td th:text="${productn.price}">
             <td th:text="${productn.description}">
+            <td th:text="${productn.name}">
+            <td th:text="${productn.price}">
 
-            <td th:text="${productn.getSupplier().getName()}"></td>
             <td><a th:href="@{/edit/__${productn.id}__ }">Edit</a></td>
             <td><a th:href="@{/delete/__${productn.id}__ }">Delete</a></td>
         </tr>

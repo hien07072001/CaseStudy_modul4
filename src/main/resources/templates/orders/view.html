@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<h1>View Orders</h1>
+<a href="/orders">List Orders</a>
+<table>
+    <tr>
+        <td>Orders Date:</td>
+        <td th:text="${orders.date}"></td>
+    </tr>
+    <tr>
+        <td>Customer Name:</td>
+        <td th:text="${orders.customer.name}"></td>
+    </tr>
+    <tr>
+        <td>Phone:</td>
+        <td th:text="${orders.customer.phone}"></td>
+    </tr>
+    <tr>
+        <td>Address:</td>
+        <td th:text="${orders.customer.address}"></td>
+    </tr>
+</table>
 </body>
 </html>

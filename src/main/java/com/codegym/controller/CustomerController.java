@@ -40,7 +40,7 @@ public class CustomerController {
         return modelAndView;
     }
 
-    @PostMapping("/creates")
+    @PostMapping("/create")
     public RedirectView saveCustomer(@ModelAttribute("customer") Customer customer, RedirectAttributes redirect) {
         customerService.save(customer);
         redirect.addFlashAttribute("message", "Create customer successfully !");

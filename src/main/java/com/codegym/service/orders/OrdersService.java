@@ -9,6 +9,8 @@ import java.util.Optional;
 public interface OrdersService  {
     Page<Orders> findAll(Pageable pageable);
 
+    Page<Orders> findAllByDatesOrders(String date, Pageable pageable);
+
     Optional<Orders> findById(Long id);
 
     void save(Orders orders);

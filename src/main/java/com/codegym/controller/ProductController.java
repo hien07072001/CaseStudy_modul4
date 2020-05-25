@@ -1,9 +1,7 @@
 package com.codegym.controller;
 
 import com.codegym.model.Product;
-import com.codegym.model.Supplier;
 import com.codegym.service.product.ProductService;
-import com.codegym.service.supplier.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,19 +17,11 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @Autowired
-    private SupplierService supplierService;
-
-    @ModelAttribute("suppliers")
-    public Iterable<Supplier> suppliers(){
-        return supplierService.findAll();
-    }
-
     @GetMapping
-    public ModelAndView listProduct(@RequestParam("first") Optional<String> first, Pageable pageable) {
+    public ModelAndView listProduct(@RequestParam("s") Optional<String> s, Pageable pageable) {
         Page<Product> products;
-        if (first.isPresent()){
-            products = productService.findAllByName(first.get(), pageable);
+        if (s.isPresent()){
+            products = productService.findAllByName(s.get(), pageable);
         }else {
          products = productService.findAll(pageable);
         }

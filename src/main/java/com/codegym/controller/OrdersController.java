@@ -2,6 +2,7 @@ package com.codegym.controller;
 
 import com.codegym.model.Customer;
 import com.codegym.model.Orders;
+import com.codegym.model.Product;
 import com.codegym.repository.CustomerRepository;
 import com.codegym.repository.OrdersRepository;
 import com.codegym.service.customer.CustomerService;
@@ -40,12 +41,15 @@ public class OrdersController {
     }
 
     @GetMapping
-    public ModelAndView listOrders(@RequestParam("orders") Optional<String> status,
-            @RequestParam(required = false) Long customerId,
-            Pageable pageable){
-            Page<Orders> orders;
-
+    public ModelAndView listOrders( @RequestParam("orders") Optional<String> date,
+                                    @RequestParam(required = false) Long customerId,
+                                    Pageable pageable){
+        Page<Orders> orders;
+        if (date .isPresent()){
+            orders = ordersService.findAllByDatesOrders(date.get(), pageable);
+        }else {
             orders = ordersService.findAll(pageable);
+        }
 
         Optional<Customer> customer = Objects.nonNull(customerId)
                 ? customerService.findById(customerId)
@@ -59,7 +63,6 @@ public class OrdersController {
         modelAndView.addObject("orders", orders);
         return modelAndView;
     }
-//
     @GetMapping("/create")
     public ModelAndView showFormCreateOrders(){
         ModelAndView modelAndView = new ModelAndView("orders/create");
@@ -86,7 +89,7 @@ public class OrdersController {
             return new ModelAndView("/orders/error");
         }
     }
-//
+
     @PostMapping("/edit")
     public RedirectView editOrders(@ModelAttribute("orders") Orders orders, RedirectAttributes redirect) throws Exception {
         ordersService.save(orders);

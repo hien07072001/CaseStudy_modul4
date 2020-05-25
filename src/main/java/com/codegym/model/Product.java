@@ -17,9 +17,6 @@ public class Product {
     private Orders orders;
 
     @ManyToOne
-    private Supplier supplier;
-
-    @ManyToOne
     private Customer customer;
 
     public Customer getCustomer() {
@@ -30,13 +27,6 @@ public class Product {
         this.customer = customer;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
-    }
 
     public String getDescription() {
         return description;
