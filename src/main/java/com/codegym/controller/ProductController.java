@@ -28,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ModelAndView listCustomer(@RequestParam("first") Optional<String> first, Pageable pageable) {
+    public ModelAndView listProduct(@RequestParam("first") Optional<String> first, Pageable pageable) {
         Page<Product> products;
         if (first.isPresent()){
             products = productService.findAllByName(first.get(), pageable);
@@ -47,7 +47,7 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ModelAndView saveCustomer(@ModelAttribute("product") Product product){
+    public ModelAndView saveProduct(@ModelAttribute("product") Product product){
         productService.save(product);
         ModelAndView modelAndView = new ModelAndView("product/create");
         modelAndView.addObject("product", new Product());
@@ -55,7 +55,7 @@ public class ProductController {
         return modelAndView;
     }
     @GetMapping("/edit/{id}")
-    public ModelAndView showEditLaptop(@PathVariable Long id){
+    public ModelAndView showEditProduct(@PathVariable Long id){
         Optional<Product> product = productService.findById(id);
         if (product.isPresent()){
             ModelAndView modelAndView = new ModelAndView("product/edit");
@@ -88,7 +88,7 @@ public class ProductController {
     }
 
     @PostMapping("/delete")
-    public String deleteMaterial(@ModelAttribute("product") Product product) {
+    public String deleteProduct(@ModelAttribute("product") Product product) {
         productService.remove(product.getId());
         return "redirect:product";
     }

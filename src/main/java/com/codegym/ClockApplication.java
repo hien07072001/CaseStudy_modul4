@@ -11,15 +11,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 public class ClockApplication {
-//    @Bean
-//    public ProductService productService(){
-//        return new ProductServiceImpl();
-//    }
-//
-//    @Bean
-//    public SupplierService supplierService(){
-//        return new SupplierServiceImpl();
-//    }
 
     public static void main(String[] args) {
         SpringApplication.run(ClockApplication.class, args);

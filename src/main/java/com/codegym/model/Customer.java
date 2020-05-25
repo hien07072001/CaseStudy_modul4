@@ -1,9 +1,7 @@
 package com.codegym.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -13,6 +11,17 @@ public class Customer {
     private String address;
     private String name ;
     private String phone;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    private List<Orders> orders;
+
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
+    }
 
     public Long getId() {
         return id;

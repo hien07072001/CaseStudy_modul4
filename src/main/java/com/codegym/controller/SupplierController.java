@@ -42,7 +42,7 @@ public class SupplierController {
         return modelAndView;
     }
     @GetMapping("/edit/{id}")
-    public ModelAndView showEditLaptop(@PathVariable Long id){
+    public ModelAndView showEditSupplier(@PathVariable Long id){
         Optional<Supplier> supplier = supplierService.findById(id);
         if (supplier.isPresent()){
             ModelAndView modelAndView = new ModelAndView("supplier/edit");
@@ -54,7 +54,7 @@ public class SupplierController {
     }
 
     @PostMapping("/edit")
-    public ModelAndView updateProduct(@ModelAttribute("supplier") Supplier supplier) {
+    public ModelAndView updateSupplier(@ModelAttribute("supplier") Supplier supplier) {
         supplierService.save(supplier);
         ModelAndView modelAndView = new ModelAndView("supplier/edit");
         modelAndView.addObject("supplier", supplier);
@@ -66,7 +66,7 @@ public class SupplierController {
     public ModelAndView showFormDelete(@PathVariable Long id) {
         Optional<Supplier> supplier = supplierService.findById(id);
         if (supplier.isPresent()){
-            ModelAndView modelAndView = new ModelAndView("product/delete");
+            ModelAndView modelAndView = new ModelAndView("supplier/delete");
             modelAndView.addObject("supplier", supplier.get());
             return modelAndView;
         } else {
@@ -75,7 +75,7 @@ public class SupplierController {
     }
 
     @PostMapping("/delete")
-    public String deleteMaterial(@ModelAttribute("supplier") Supplier supplier) {
+    public String deleteSupplier(@ModelAttribute("supplier") Supplier supplier) {
         productService.remove(supplier.getId());
         return "redirect:suppliers";
     }
