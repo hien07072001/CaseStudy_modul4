@@ -83,7 +83,7 @@ public class ProductController {
             e.printStackTrace();
         }
         //Tao doi tuong de luu vao database
-        Product product = new Product(fileName,clockForm.getName(),clockForm.getPrice(), clockForm.getDescription(), clockForm.getOrders(), clockForm.getCustomer());
+        Product product = new Product(clockForm.getName(),fileName,clockForm.getPrice(), clockForm.getDescription(), clockForm.getOrders(), clockForm.getCustomer());
         productService.save(product);
         redirect.addFlashAttribute("message", "Create producer successfully !");
         return new RedirectView("/product");
@@ -103,8 +103,9 @@ public class ProductController {
 
             clockForm.setOrders(producer.get().getOrders());
             clockForm.setCustomer(producer.get().getCustomer());
-
+            clockForm.setAvatar(null);
             ModelAndView modelAndView = new ModelAndView("/product/edit");
+//            modelAndView.addObject("clock", producer.get());
             modelAndView.addObject("clockForm", clockForm);
             return modelAndView;
         }else {
