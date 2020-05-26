@@ -5,8 +5,6 @@ import com.codegym.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +13,7 @@ import java.security.Principal;
 
 @Controller
 public class UserController {
+
     @Autowired
     private ProductService productService;
 
@@ -34,10 +33,12 @@ public class UserController {
     }
 
     @GetMapping("/admin")
-    public String admin() {
+    public String admin(Principal principal) {
         // Get authenticated user name from SecurityContext
-        SecurityContext context = SecurityContextHolder.getContext();
-        System.out.println(context);
+//        SecurityContext context = SecurityContextHolder.getContext();
+//        System.out.println(context);
+//        return "/product/admin";
+        System.out.println(principal.getName());
         return "/product/admin";
     }
 //    @GetMapping("/articles")

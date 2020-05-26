@@ -9,9 +9,10 @@
 <p>
     <a href="/orders">Order list</a>
 </p>
-<!--<th:block th:if="${message}">-->
-<!--    <p th:text="${message}"></p>-->
-<!--</th:block>-->
+<!--/*@thymesVar id="message" type="java"*/-->
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
 <form th:action="@{/orders/edit}" th:object="${orders}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
     <table>

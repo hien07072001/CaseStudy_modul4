@@ -9,32 +9,60 @@
 <p>
     <a href="/product">Product list</a>
 </p>
-<th:block th:if="${message}">
-    <p th:text="${message}"></p>
-</th:block>
-<form th:action="@{/product/create}" th:object="${product}" method="post">
+<!--<th:block th:if="${message}">-->
+<!--    <p th:text="${message}"></p>-->
+<!--</th:block>-->
+<form th:action="@{/product/create}" th:object="${clockForm}" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>Avatar:</td>
-            <td><input type="file" th:field="*{avatar}"/></td>
+            <td><input type="file" th:field="*{avatar}" multiple/></td>
         </tr>
+
+        <tr>
+
         <tr>
             <td>Description:</td>
             <td><input type="text" th:field="*{description}"/></td>
         </tr>
-
         <tr>
             <td>Name</td>
             <td><input type="text" th:field="*{name}"/></td>
         </tr>
-        <tr>
+
+
             <td>Price:</td>
-            <td><input type="number" th:field="*{price}"/></td>
+            <td><input type="text" th:field="*{price}"/></td>
+        </tr>
+        <tr>
+            <td>Orders:</td>
+            <td>
+                <select name="orders" th:field="*{orders}">
+                    <option
+                            th:each="order: ${orders}"
+                            th:value="${order.id}"
+                            th:text="${order.date}">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Customer Name:</td>
+            <td>
+                <select name="name" th:field="*{customer}">
+                    <option
+                            th:each="c : ${customers}"
+                            th:value="${c.id}"
+                            th:text="${c.name}">
+                    </option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td></td>
             <td><input type="submit" value="Create product"></td>
         </tr>
+
     </table>
 </form>
 </body>

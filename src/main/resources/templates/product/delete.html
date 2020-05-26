@@ -10,9 +10,9 @@
 <p>
     <a href="/product">Product list</a>
 </p>
-<form th:action="@{/delete}" th:object="${product}" method="post">
+<form th:action="@{/product/delete}" th:object="${product}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
-    <table>
+    <table border="1">
         <tr>
             <td>AVATAR:</td>
             <td th:text="${product.avatar}"></td>
@@ -32,16 +32,16 @@
             <td th:text="${product.price}"></td>
         </tr>
 
-        <tr>
-            <td>Avatar:</td>
-            <td><input type="file" th:field="*{avatar}"/></td>
-        </tr>
+<!--        <tr>-->
+<!--            <td>Avatar:</td>-->
+<!--            <td><input type="file" th:field="*{avatar}"/></td>-->
+<!--        </tr>-->
 
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Delete product"></td>
-        </tr>
     </table>
+    <tr>
+        <td></td>
+        <td><input type="submit" value="Delete product"></td>
+    </tr>
 </form>
 </body>
 </html>

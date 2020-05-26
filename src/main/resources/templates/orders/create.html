@@ -7,9 +7,10 @@
 <body>
 <h1>Create orders</h1>
 
-<!--<th:block th:if="${message}">-->
-<!--    <p th:text="${message}"></p>-->
-<!--</th:block>-->
+<!--/*@thymesVar id="message" type="java"*/-->
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
 <p>
     <a href="/orders">Orders list</a>
 </p>
@@ -19,7 +20,7 @@
 
         <tr>
             <td> Date:</td>
-            <td><input type="text" /></td>
+            <td><input type="text" th:field="*{date}"/></td>
         </tr>
         <tr>
             <td>Customer Name:</td>

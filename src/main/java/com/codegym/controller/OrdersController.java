@@ -42,7 +42,7 @@ public class OrdersController {
 
     @GetMapping
     public ModelAndView listOrders( @RequestParam("orders") Optional<String> date,
-                                    @RequestParam(required = false) Long customerId,
+                                    @RequestParam(required = false) Long id,
                                     Pageable pageable){
         Page<Orders> orders;
         if (date .isPresent()){
@@ -51,8 +51,8 @@ public class OrdersController {
             orders = ordersService.findAll(pageable);
         }
 
-        Optional<Customer> customer = Objects.nonNull(customerId)
-                ? customerService.findById(customerId)
+        Optional<Customer> customer = Objects.nonNull(id)
+                ? customerService.findById(id)
                 : Optional.empty();
 
         if (customer.isPresent()){
@@ -82,7 +82,6 @@ public class OrdersController {
         Optional<Orders> orders = ordersService.findById(id);
         if (orders.isPresent()){
             ModelAndView modelAndView = new ModelAndView("/orders/edit");
-            //Orders order = orders.get();
             modelAndView.addObject("orders", orders.get());
             return modelAndView;
         } else {

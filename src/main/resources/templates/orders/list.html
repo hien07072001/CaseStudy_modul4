@@ -5,7 +5,20 @@
     <title>Title</title>
 </head>
 <body>
+<div>
+    <a th:href="@{/list}">Home</a> | <a th:href="@{/logout}">Logout</a>
+</div>
+
 <a href="/orders/create">Create Order</a>
+<a href="/orders">Order List</a>
+
+<!--tim kiem -->
+<form>
+    <span>Search by date</span>
+    <input name="orders" type="text">
+    <input type="submit" value="seach">
+</form>
+
 <h1>Orders</h1>
 <table border="1">
     <tr>
@@ -28,6 +41,11 @@
             <td><a th:href="@{/orders/view/__${order.id}__ }">View</a></td>
         </tr>
     </th:block>
+    <div>
+        <a th:href="@{'/orders'(page=${orders.number - 1})}" th:if="${orders.hasPrevious()}"></a>
+        <span th:text="${orders.number + 1}"></span>/<span th:text="${orders.totalPages}"></span>
+        <a th:href="@{'/orders'(page=${orders.number + 1})}" th:if="${orders.hasNext()}"></a>
+    </div>
 </table>
 </body>
 </html>

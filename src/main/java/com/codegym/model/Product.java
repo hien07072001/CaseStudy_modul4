@@ -13,6 +13,28 @@ public class Product {
     private double price;
     private String description;
 
+    public Product() {
+    }
+
+    public Product(String name, String avatar, double price, String description, Orders orders, Customer customer) {
+        this.name = name;
+        this.avatar = avatar;
+        this.price = price;
+        this.description = description;
+        this.orders = orders;
+        this.customer = customer;
+    }
+
+    public Product(Long id, String name, String avatar, double price, String description, Orders orders, Customer customer) {
+        this.id = id;
+        this.name = name;
+        this.avatar = avatar;
+        this.price = price;
+        this.description = description;
+        this.orders = orders;
+        this.customer = customer;
+    }
+
     @ManyToOne
     private Orders orders;
 
