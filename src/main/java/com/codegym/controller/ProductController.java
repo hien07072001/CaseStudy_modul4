@@ -134,7 +134,7 @@ public class ProductController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Product product = new Product(clockForm.getId(),fileName, clockForm.getName(), clockForm.getPrice(), clockForm.getDescription(), clockForm.getOrders(), clockForm.getCustomer());
+            Product product = new Product(clockForm.getId(), clockForm.getName(),fileName, clockForm.getPrice(), clockForm.getDescription(), clockForm.getOrders(), clockForm.getCustomer());
             productService.save(product);
             redirect.addFlashAttribute("message", "Edit producer successfully !");
             return new RedirectView("/product");
