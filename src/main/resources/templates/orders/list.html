@@ -3,24 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        ul {
+
+            list-style-type: none;
+            margin: 0;
+            padding: 5px;
+            overflow: hidden;
+            background-color: lightblue;
+
+        }
+        li a {
+            display: block;
+            padding: 14px 40px;
+            background-color: #dddddd;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .tableStyle {
+            width: 100%;
+        }
+        .tableStyle th {
+            background-color: #cad8fa;
+            padding: 5px;
+        }
+        .tableStyle tr th.even {
+            background-color: #9cadde;
+        }
+        .tableStyle td {
+            background-color: #f0e7da;
+            padding: 5px;
+        }
+        .tableStyle tr td.even {
+            background-color: #e1d6c7;
+        }
+    </style>
 </head>
 <body>
-<div>
-    <a th:href="@{/list}">Home</a> | <a th:href="@{/logout}">Logout</a>
-</div>
-
-<a href="/orders/create">Create Order</a>
-<a href="/orders">Order List</a>
-
-<!--tim kiem -->
+<ul>
+    <li><a th:href="@{/admin}">Home</a></li>
+    <li><a th:href="@{/logout}">Logout</a></li>
+    <li><a th:href="@{/product}">List product</a></li>
+    <li><a th:href="@{/customer}">List customer</a></li>
+</ul>
 <form>
     <span>Search by date</span>
     <input name="orders" type="text">
     <input type="submit" value="seach">
 </form>
-
+<br/>
+<a href="/orders/create">Create Order</a>
 <h1>Orders</h1>
-<table border="1">
+<table  class="tableStyle"  border="1">
     <tr>
         <th>Date</th>
         <th>Customer</th>

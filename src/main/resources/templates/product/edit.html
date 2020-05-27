@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 10px;
+            padding: 10px;
+        }
+        .tableStyle {
+            width: 50%;
+        }
+
+        .tableStyle td {
+            background-color: #f0e7da;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 <h1>Edit Product</h1>
@@ -13,7 +29,7 @@
 </th:block>
 <form th:action="@{/product/edit}" th:object="${clockForm}" method="post" enctype="multipart/form-data">
     <input th:type="hidden" name="id" th:field="*{id}">
-    <table>
+    <table  class="tableStyle" border="1">
         <tr>
             <td>ID</td>
             <td><input type="text" th:field="*{id}"/></td>

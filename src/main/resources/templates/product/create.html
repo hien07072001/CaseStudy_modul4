@@ -3,24 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {
+            margin: 10px;
+            padding: 10px;
+        }
+        .tableStyle {
+            width: 50%;
+        }
+
+        .tableStyle td {
+            background-color: #f0e7da;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 <h1>Create product</h1>
 <p>
     <a href="/product">Product list</a>
 </p>
-<!--<th:block th:if="${message}">-->
-<!--    <p th:text="${message}"></p>-->
-<!--</th:block>-->
+<!--/*@thymesVar id="message" type="java"*/-->
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
 <form th:action="@{/product/create}" th:object="${clockForm}" method="post" enctype="multipart/form-data">
-    <table>
+    <table class="tableStyle" border="1">
         <tr>
             <td>Avatar:</td>
             <td><input type="file" th:field="*{avatar}" multiple/></td>
         </tr>
-
         <tr>
-
         <tr>
             <td>Description:</td>
             <td><input type="text" th:field="*{description}"/></td>
@@ -29,8 +42,6 @@
             <td>Name</td>
             <td><input type="text" th:field="*{name}"/></td>
         </tr>
-
-
             <td>Price:</td>
             <td><input type="text" th:field="*{price}"/></td>
         </tr>

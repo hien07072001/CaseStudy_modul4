@@ -3,24 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        ul {
+
+            list-style-type: none;
+            margin: 0;
+            padding: 5px;
+            overflow: hidden;
+            background-color: lightblue;
+
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            padding: 14px 40px;
+            background-color: #dddddd;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .tableStyle {
+            width: 100%;
+        }
+        .tableStyle th {
+            background-color: #cad8fa;
+            padding: 5px;
+        }
+        .tableStyle tr th.even {
+            background-color: #9cadde;
+        }
+        .tableStyle td {
+            background-color: #f0e7da;
+            padding: 5px;
+        }
+        .tableStyle tr td.even {
+            background-color: #e1d6c7;
+        }
+        h1{
+
+        }
+    </style>
 </head>
 <body>
-<div>
-    <a th:href="@{/list}">Home</a> | <a th:href="@{/logout}">Logout</a>
-</div>
-
-<a href="/product/create">Create new product</a>
-<h1>Product</h1>
-
-
+<ul>
+    <li><a th:href="@{/admin}">Home</a></li>
+    <li><a th:href="@{/logout}">Logout</a></li>
+    <li><a th:href="@{/customer}">List Customer</a></li>
+    <li><a th:href="@{/orders}">List Order</a></li>
+</ul>
 <form>
     Search by name:
     <input name="s" type="text"/>
     <input type="submit" value="Search">
 </form>
 <br/>
+<a href="/product/create">Create new product</a>
+<h1>Product</h1>
 
-<table border="1">
+<br/>
+<table class="tableStyle"  border="1">
     <tr>
         <th>ID</th>
         <th>AVATAR</th>
@@ -29,27 +78,22 @@
         <th>PRICE</th>
         <th>Order</th>
         <th>Customer</th>
-
         <th>Edit</th>
         <th>Delete</th>
-        <th>VIEW</th>
-
+<!--        <th>VIEW</th>-->
     </tr>
     <th:block th:each="productn : ${products}">
         <tr>
             <td th:text="${productn.id}"></td>
            <td> <img th:src="@{'/a/' + ${productn.getAvatar()}}" width="200px" height="auto"></td>
-<!--            <td><img width="100px" height="50px" th:src="@{'/img/'+ ${productn.getAvatar()}}"></td>-->
             <td th:text="${productn.description}">
             <td th:text="${productn.name}">
             <td th:text="${productn.price}">
             <td th:text="${productn.orders.date}">
             <td th:text="${productn.customer.name}">
-
             <td><a th:href="@{/product/edit/{id}(id=${productn.getId()})}">Edit</a></td>
             <td><a th:href="@{/product/delete/__${productn.id}__ }">Delete</a></td>
-            <td><a th:href="@{/product/view/__${productn.id}__ }">View</a></td>
-
+<!--            <td><a th:href="@{/product/view/__${productn.id}__ }">View</a></td>-->
         </tr>
     </th:block>
     <div>
@@ -58,6 +102,5 @@
         <a th:href="@{'/product'(page=${products.number + 1})}" th:if="${products.hasNext()}">Next</a>
     </div>
 </table>
-
 </body>
 </html>

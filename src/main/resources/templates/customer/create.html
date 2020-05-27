@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {
+            margin: 10px;
+            padding: 10px;
+        }
+        .tableStyle {
+            width: 50%;
+        }
+
+        .tableStyle td {
+            background-color: #f0e7da;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 <h1>Create customer</h1>
 <p>
     <a href="/customer">Customer list</a>
 </p>
-<!--<th:block th:if="${message}">-->
-<!--    <p th:text="${message}"></p>-->
-<!--</th:block>-->
+<!--/*@thymesVar id="message" type="java"*/-->
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
 <form th:action="@{/customer/create}" th:object="${customer}" method="post">
-    <table>
+    <table class="tableStyle" border="1">
         <tr>
             <td>Address:</td>
             <td><input type="text" th:field="*{address}"/></td>
@@ -26,7 +41,6 @@
             <td>Phone:</td>
             <td><input type="text" th:field="*{phone}"/></td>
         </tr>
-
         <tr>
             <td></td>
             <td><input type="submit" value="Create Customer"></td>

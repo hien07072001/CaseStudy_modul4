@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {
+            margin: 10px;
+            padding: 10px;
+        }
+        .tableStyle {
+            width: 50%;
+        }
+
+        .tableStyle td {
+            background-color: #f0e7da;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 <h1>Delete order</h1>
@@ -12,7 +26,7 @@
 </p>
 <form th:action="@{/customer/delete}" th:object="${customer}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
-    <table>
+    <table class="tableStyle" border="1">
         <tr>
             <td>ADDRESS:</td>
             <td th:text="${customer.address}"></td>
@@ -31,6 +45,5 @@
         </tr>
     </table>
 </form>
-
 </body>
 </html>

@@ -24,10 +24,8 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/").permitAll()
-//                .antMatchers("/user").authenticated()
                 .and().authorizeRequests().antMatchers("/user/**").hasRole("USER")
                 .and().authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
-//                .and().authorizeRequests().antMatchers("/articles/**").access("hasAnyRole('ADMIN','USER')")
                 .and()
                 //.authorizeRequests().antMatchers("/**").hasRole("USER")
                 //.and()
@@ -41,11 +39,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().withUser("user").password("12345").roles("USER").
-//                and().withUser("admin").password("12345").roles("ADMIN");
-
-//    }
-        auth.userDetailsService((UserDetailsService) appUserService)
+auth.userDetailsService((UserDetailsService) appUserService)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
     @Override

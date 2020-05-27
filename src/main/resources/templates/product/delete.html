@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {
+            margin: 10px;
+            padding: 10px;
+        }
+        .tableStyle {
+            width: 50%;
+        }
+        .tableStyle td {
+            background-color: #f0e7da;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 <h1>Delete product</h1>
@@ -12,17 +25,15 @@
 </p>
 <form th:action="@{/product/delete}" th:object="${product}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
-    <table border="1">
+    <table class="tableStyle" border="1">
         <tr>
             <td>AVATAR:</td>
             <td th:text="${product.avatar}"></td>
         </tr>
-
         <tr>
             <td>Name:</td>
             <td th:text="${product.name}"></td>
         </tr>
-
         <tr>
             <td>Description:</td>
             <td th:text="${product.description}"></td>
@@ -31,12 +42,6 @@
             <td>Price:</td>
             <td th:text="${product.price}"></td>
         </tr>
-
-<!--        <tr>-->
-<!--            <td>Avatar:</td>-->
-<!--            <td><input type="file" th:field="*{avatar}"/></td>-->
-<!--        </tr>-->
-
     </table>
     <tr>
         <td></td>

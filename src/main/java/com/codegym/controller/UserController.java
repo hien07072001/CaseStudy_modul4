@@ -24,7 +24,6 @@ public class UserController {
 
     @GetMapping("/user")
     public ModelAndView user(Principal principal, Pageable pageable) {
-        // Get authenticated user name from Principal
         System.out.println(principal.getName());
         Page<Product> products = productService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("product/list");
@@ -34,26 +33,7 @@ public class UserController {
 
     @GetMapping("/admin")
     public String admin(Principal principal) {
-        // Get authenticated user name from SecurityContext
-//        SecurityContext context = SecurityContextHolder.getContext();
-//        System.out.println(context);
-//        return "/product/admin";
         System.out.println(principal.getName());
         return "/product/admin";
     }
-//    @GetMapping("/articles")
-//    public String getArticlesPage () {
-//        return "articler";
-//
-//    }
-//    @GetMapping("/accessDenied")
-//    public String getAccessDeniedPage() {
-//        return "accessDenied";
-//    }
-//    @GetMapping("/admin/monitor")
-//    public String getAdminMonitorPage() {
-//        return "admin";
-//    }
-
-
 }

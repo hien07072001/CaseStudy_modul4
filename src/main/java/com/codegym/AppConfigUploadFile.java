@@ -20,10 +20,7 @@ public class AppConfigUploadFile extends WebMvcConfigurerAdapter  {
     Environment environment;
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
         String fileUpload = environment.getProperty("file_upload").toString();
-
-        // Image resource.
         registry.addResourceHandler("/a/**") //
                 .addResourceLocations("file:" + fileUpload);
     }

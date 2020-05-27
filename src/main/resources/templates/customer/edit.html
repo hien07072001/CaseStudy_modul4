@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * { /* reset lại margin và padding cho các tag */
+            margin: 10px;
+            padding: 10px;
+        }
+        .tableStyle {
+            width: 50%;
+        }
+        /*.tableStyle th {*/
+        /*    background-color: #cad8fa;*/
+        /*    padding: 5px;*/
+        /*}*/
+        .tableStyle td {
+            background-color: #f0e7da;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 <h1>Edit orders</h1>
@@ -15,7 +32,7 @@
 </th:block>
 <form th:action="@{/customer/edit}" th:object="${customer}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
-    <table>
+    <table class="tableStyle" border="1">
         <tr>
             <td>ADDRESS:</td>
             <td><input type="text" th:field="*{address}"/></td>
@@ -34,6 +51,5 @@
         </tr>
     </table>
 </form>
-
 </body>
 </html>

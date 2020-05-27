@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {
+            margin: 5px;
+            padding:5px;
+        }
+        .tableStyle td {
+            background-color: #f0e7da;
+            padding: 5px;
+        }
+        .tableStyle tr td.even {
+            background-color: #e1d6c7;
+        }
+    </style>
 </head>
 <body>
 <h1>Edit orders</h1>
@@ -15,8 +28,7 @@
 </th:block>
 <form th:action="@{/orders/edit}" th:object="${orders}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
-    <table>
-
+    <table class="tableStyle" border="1">
         <tr>
             <td>DATE:</td>
             <td><input type="text" th:field="*{date}"/></td>
